@@ -6,29 +6,96 @@
   <meta name="theme-color" content="#030a08">
   <title>SideCam Kuwait — Every Player. Every Moment.</title>
   <meta name="description" content="SideCam Kuwait — find your futsal match, discover your clips, and own your moments.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root{
+      --bg:#030a08;--panel:#07110e;--line:#1a2b23;--text:#f2f4ef;
+      --muted:#89948d;--lime:#9cff19;--max:1380px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+    a{color:inherit;text-decoration:none} button,input,select{font:inherit} button{cursor:pointer}
+    .topbar{height:84px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:28px;padding:0 5vw;position:sticky;top:0;z-index:50;background:rgba(3,10,8,.94);backdrop-filter:blur(16px)}
+    .brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.08em}
+    .brand-mark{width:34px;height:34px;border:2px solid var(--lime);color:var(--lime);display:grid;place-items:center;transform:skew(-5deg);font-family:"Barlow Condensed"}
+    .brand-name{font-size:18px}.brand small{font-size:8px;color:#607067;letter-spacing:.25em}
+    .nav{display:flex;gap:34px;font-size:12px;font-weight:800;letter-spacing:.18em}
+    .nav a{color:#88968d;padding:31px 0 26px;border-bottom:2px solid transparent}.nav a:hover,.nav a.active{color:#fff;border-color:var(--lime)}
+    .nav-actions{display:flex;gap:9px;align-items:center}
+    .icon-btn,.cart-btn,.outline-btn,.secondary-btn{border:1px solid #26362f;background:transparent;color:#fff;min-height:42px;padding:0 18px;font-size:11px;font-weight:800;letter-spacing:.08em}
+    .icon-btn{width:44px;padding:0}.cart-btn b{color:var(--lime);margin-left:5px}
+    .hero{min-height:620px;display:grid;grid-template-columns:1.08fr .92fr;max-width:var(--max);margin:auto;padding:100px 6vw 70px;border-bottom:1px solid var(--line);overflow:hidden;position:relative;background:radial-gradient(circle at 74% 45%,rgba(83,176,26,.28),transparent 25%),linear-gradient(120deg,rgba(11,32,23,.38),transparent 55%)}
+    .hero:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(105deg,transparent 0 65px,#21412f 66px,#21412f 67px)}
+    .hero-copy{position:relative;z-index:2;align-self:center;max-width:690px}
+    .eyebrow,.kicker{font-size:11px;font-weight:800;letter-spacing:.22em;color:#9ba39f}
+    .eyebrow:before{content:"";display:inline-block;width:24px;height:2px;background:var(--lime);margin-right:14px;vertical-align:middle}
+    .eyebrow span{margin-left:24px;color:#536258}
+    h1,h2,h3{font-family:"Barlow Condensed",sans-serif;margin:0;line-height:.9}
+    h1{font-size:clamp(60px,7vw,105px);margin-top:28px;letter-spacing:-.03em}
+    h1 strong,h2 strong{color:var(--lime)}
+    .hero-copy>p{color:#a3aca7;line-height:1.7;max-width:600px;margin:26px 0}
+    .hero-actions{display:flex;gap:12px}
+    .primary-btn{background:var(--lime);color:#071006;border:0;min-height:46px;padding:0 25px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;letter-spacing:.05em}
+    .secondary-btn{display:inline-flex;align-items:center}
+    .hero-points{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:42px}
+    .hero-points span{font-size:11px;color:#cfd4d0}.hero-points b,.hero-points small{display:block}.hero-points small{color:#65726a;font-size:8px;margin-top:3px}
+    .hero-art{position:relative;min-height:430px;z-index:1}
+    .pitch-circle{position:absolute;width:260px;height:260px;border:2px solid rgba(140,255,63,.08);border-radius:50%;top:40px;left:40%}
+    .player-main{position:absolute;left:35%;top:30px}.player-main .flag{position:absolute;top:-24px;left:35px;font-size:43px;filter:saturate(.75)}
+    .body{width:110px;height:205px;background:#07100d;clip-path:polygon(25% 0,75% 0,100% 18%,82% 100%,18% 100%,0 18%);display:grid;place-items:center;font-family:"Barlow Condensed";font-size:34px;font-weight:900}
+    .body.light{background:#e8eee8;color:#111;width:65px;height:125px;font-size:22px}
+    .leg{position:absolute;width:38px;height:175px;background:#07100d;top:172px;border-radius:20px}.l1{left:13px;transform:rotate(26deg)}.l2{left:74px;transform:rotate(-25deg)}
+    .ball{position:absolute;left:111px;top:290px;width:56px;height:56px;background:#dfe8df;color:#27372d;border-radius:50%;display:grid;place-items:center;font-size:28px}
+    .player-goal{position:absolute;right:50px;bottom:110px}.player-goal .leg{width:22px;height:95px;top:105px;background:#09100d}.gl1{left:5px;transform:rotate(10deg)}.gl2{left:42px;transform:rotate(-10deg)}
+    .goal-frame{position:absolute;right:10px;bottom:48px;width:155px;height:145px;border-top:4px solid #d74c4c;border-right:4px solid #d74c4c;border-left:2px solid #23332a;border-bottom:2px solid #23332a}
+    .hero-note{position:absolute;right:0;bottom:30px;border-left:2px solid var(--lime);padding-left:15px;font-size:12px;font-weight:900;letter-spacing:.13em;line-height:1.35}
+    .section{max-width:var(--max);margin:auto;padding:78px 6vw;border-bottom:1px solid var(--line)}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:35px}
+    .section-head h2,.finder h2,.how h2,.pricing h2{font-size:46px;margin-top:7px}
+    .section-head p,.finder p{color:var(--muted);font-size:13px}.section-head>a{font-size:11px;font-weight:900;letter-spacing:.06em}
+    .match-grid,.clip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .match-card,.clip-card{border:1px solid var(--line);background:var(--panel);overflow:hidden;transition:.2s ease;cursor:pointer}
+    .match-card:hover,.clip-card:hover{transform:translateY(-3px);border-color:#395143}
+    .match-image,.clip-image{min-height:170px;position:relative;background:radial-gradient(circle at 70% 40%,rgba(156,255,25,.16),transparent 25%),linear-gradient(140deg,#09150f,#030807)}
+    .match-image .date,.clip-image .tag{position:absolute;top:16px;left:16px;background:var(--lime);color:#071006;padding:6px 9px;font-size:9px;font-weight:900}
+    .match-body,.clip-body{padding:22px}.match-body h3,.clip-body h3{font-size:29px;margin-top:7px}.match-body p,.clip-body p{color:var(--muted);font-size:12px;margin-bottom:0}
+    .finder{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;background:radial-gradient(circle at 75% 50%,rgba(72,165,22,.11),transparent 28%)}
+    .finder-box{border:1px solid #263a30;padding:24px;display:grid;gap:16px}
+    .finder-box label{font-size:10px;font-weight:800;letter-spacing:.1em;color:#9aa59e}
+    .finder-box select,.finder-box input{display:block;width:100%;margin-top:8px;height:46px;padding:0 13px;background:#07100d;color:#fff;border:1px solid #2b3d33}
+    .finder-message{min-height:18px;margin:0!important;color:#aab5ad!important}
+    .clip-body .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .price{font-family:"Barlow Condensed";font-size:24px;color:var(--lime);font-weight:900}
+    .how .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:35px;border-top:1px solid var(--line)}
+    .steps article{padding:25px 30px 10px 0;border-right:1px solid var(--line)}.steps article+article{padding-left:30px}
+    .steps b{font-family:"Barlow Condensed";font-size:28px;color:var(--lime)}.steps h3{font-size:28px;margin:7px 0}.steps p{font-size:12px;color:var(--muted);line-height:1.7}
+    .pricing{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:center}
+    .price-card{border:1px solid var(--line);padding:32px;background:var(--panel)}.price-card>small{display:block;color:var(--muted);font-weight:800;letter-spacing:.13em}
+    .price-card>strong{display:block;font-family:"Barlow Condensed";font-size:58px;margin:10px 0}.price-card i{font-size:22px;font-style:normal;color:var(--lime)}.price-card p{color:var(--muted);line-height:1.7}
+    footer{max-width:var(--max);margin:auto;padding:35px 6vw;display:flex;justify-content:space-between;align-items:center;color:#67736c;font-size:10px;letter-spacing:.12em}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}
+    .modal-card{width:min(900px,96vw);background:#07100d;border:1px solid #2a3a31;position:relative}.close{position:absolute;right:14px;top:10px;background:transparent;border:0;color:#fff;font-size:28px;z-index:2}
+    .video-stage{height:420px;background:#010504;display:grid;place-items:center;color:#dfe7e1}.video-stage span{font-size:52px}.video-stage small{position:absolute;margin-top:80px;color:#87938b}
+    .modal-info{padding:24px;display:flex;justify-content:space-between;gap:30px;align-items:center}.modal-info h3{font-size:35px;margin-top:7px}
+    .buy{text-align:right}.buy strong{display:block;font-family:"Barlow Condensed";font-size:30px;margin-bottom:10px;color:var(--lime)}
+    .toast{position:fixed;right:22px;bottom:22px;background:var(--lime);color:#071006;padding:14px 18px;font-weight:800;display:none;z-index:120}.toast.show{display:block}
+    .loading,.error,.empty{color:var(--muted);font-size:13px}
+    @media (max-width:980px){.nav{display:none}.nav-actions .outline-btn{display:none}.hero{grid-template-columns:1fr;padding-top:70px}.hero-art{display:none}.hero-points{grid-template-columns:repeat(2,1fr)}.match-grid,.clip-grid{grid-template-columns:1fr 1fr}.finder,.pricing{grid-template-columns:1fr;gap:35px}}
+    @media (max-width:650px){.topbar{padding:0 18px}.brand small{display:none}.hero,.section{padding-left:20px;padding-right:20px}.hero{min-height:560px}.hero-actions{flex-direction:column;align-items:stretch}.match-grid,.clip-grid,.how .steps{grid-template-columns:1fr}.steps article,.steps article+article{padding-left:0;border-right:0;border-bottom:1px solid var(--line)}.section-head{align-items:flex-start;flex-direction:column}.modal-info{flex-direction:column;align-items:flex-start}.buy{text-align:left}}
+  </style>
 </head>
 
 <body>
   <header class="topbar">
     <a class="brand" href="#home">
-      <span class="brand-mark">S</span>
-      <span class="brand-name">SIDECAM</span>
-      <small>KUWAIT</small>
+      <span class="brand-mark">S</span><span class="brand-name">SIDECAM</span><small>KUWAIT</small>
     </a>
-
     <nav class="nav">
-      <a class="active" href="#home">HOME</a>
-      <a href="#matches">MATCHES</a>
-      <a href="#players">PLAYERS</a>
-      <a href="#clips">CLIPS</a>
-      <a href="#pricing">PRICING</a>
+      <a class="active" href="#home">HOME</a><a href="#matches">MATCHES</a><a href="#players">PLAYERS</a><a href="#clips">CLIPS</a><a href="#pricing">PRICING</a>
     </nav>
-
     <div class="nav-actions">
       <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
       <button class="cart-btn" id="cartBtn">CART <b id="cartCount">0</b></button>
@@ -42,99 +109,45 @@
         <div class="eyebrow">FUTSAL / KUWAIT <span>EST. 2026</span></div>
         <h1>EVERY PLAYER.<br><strong>EVERY MOMENT.</strong></h1>
         <p>Professional futsal match footage, built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
-
-        <div class="hero-actions">
-          <a class="primary-btn" href="#players">FIND YOUR CLIPS →</a>
-          <a class="secondary-btn" href="#matches">◉ WATCH LATEST MATCHES</a>
-        </div>
-
+        <div class="hero-actions"><a class="primary-btn" href="#players">FIND YOUR CLIPS →</a><a class="secondary-btn" href="#matches">◉ WATCH LATEST MATCHES</a></div>
         <div class="hero-points">
-          <span>▣ <b>HD / 4K</b><small>HIGH QUALITY</small></span>
-          <span>♙ <b>PLAYER FOCUSED</b><small>EASY TO FIND</small></span>
-          <span>◇ <b>INSTANT ACCESS</b><small>GET YOUR CLIPS</small></span>
-          <span>◇ <b>SECURE PAYMENT</b><small>SAFE & SIMPLE</small></span>
+          <span>▣ <b>HD / 4K</b><small>HIGH QUALITY</small></span><span>♙ <b>PLAYER FOCUSED</b><small>EASY TO FIND</small></span>
+          <span>◇ <b>INSTANT ACCESS</b><small>GET YOUR CLIPS</small></span><span>◇ <b>SECURE PAYMENT</b><small>SAFE & SIMPLE</small></span>
         </div>
       </div>
-
       <div class="hero-art" aria-hidden="true">
         <div class="pitch-circle"></div>
-        <div class="player-main">
-          <div class="flag">🇰🇼</div>
-          <div class="body"><span>10</span></div>
-          <div class="leg l1"></div>
-          <div class="leg l2"></div>
-          <div class="ball">⬡</div>
-        </div>
-
-        <div class="player-goal">
-          <div class="body light"><span>6</span></div>
-          <div class="leg gl1"></div>
-          <div class="leg gl2"></div>
-        </div>
-
-        <div class="goal-frame"></div>
-        <div class="hero-note">LOCAL<br>PLAYERS.<br>REAL<br>MOMENTS. 🇰🇼</div>
+        <div class="player-main"><div class="flag">🇰🇼</div><div class="body"><span>10</span></div><div class="leg l1"></div><div class="leg l2"></div><div class="ball">⬡</div></div>
+        <div class="player-goal"><div class="body light"><span>6</span></div><div class="leg gl1"></div><div class="leg gl2"></div></div>
+        <div class="goal-frame"></div><div class="hero-note">LOCAL<br>PLAYERS.<br>REAL<br>MOMENTS. 🇰🇼</div>
       </div>
     </section>
 
     <section class="section" id="matches">
       <div class="section-head">
-        <div>
-          <span class="kicker">THE ARCHIVE</span>
-          <h2>RECENT MATCHES</h2>
-          <p>Browse the latest games and find your highlights.</p>
-        </div>
+        <div><span class="kicker">THE ARCHIVE</span><h2>RECENT MATCHES</h2><p>Browse the latest games and find your highlights.</p></div>
         <a href="#matches">VIEW ALL MATCHES →</a>
       </div>
-
-      <div class="match-grid" id="matchGrid">
-        <p class="loading">Loading matches...</p>
-      </div>
+      <div class="match-grid" id="matchGrid"><p class="loading">Loading matches...</p></div>
     </section>
 
     <section class="finder section" id="players">
-      <div class="finder-copy">
-        <span class="kicker">PLAYER FINDER</span>
-        <h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2>
-        <p>Choose your match and jersey number. SideCam will surface the clips tagged for you.</p>
-      </div>
-
+      <div class="finder-copy"><span class="kicker">PLAYER FINDER</span><h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2><p>Choose your match and jersey number. SideCam will surface the clips tagged for you.</p></div>
       <form class="finder-box" id="finderForm">
-        <label>
-          MATCH
-          <select id="matchSelect">
-            <option value="">Choose a match</option>
-          </select>
-        </label>
-
-        <label>
-          JERSEY NUMBER
-          <input id="jerseyNumber" type="number" min="0" max="99" placeholder="14">
-        </label>
-
+        <label>MATCH<select id="matchSelect"><option value="">Choose a match</option></select></label>
+        <label>JERSEY NUMBER<input id="jerseyNumber" type="number" min="0" max="99" placeholder="14"></label>
         <button type="submit" class="primary-btn">FIND MY CLIPS →</button>
         <p class="finder-message" id="finderMessage"></p>
       </form>
     </section>
 
     <section class="section" id="clips">
-      <div class="section-head">
-        <div>
-          <span class="kicker">MARKETPLACE</span>
-          <h2>FEATURED CLIPS</h2>
-          <p>Preview the moment. Own the original quality.</p>
-        </div>
-      </div>
-
-      <div class="clip-grid" id="clipGrid">
-        <p class="loading">Loading clips...</p>
-      </div>
+      <div class="section-head"><div><span class="kicker">MARKETPLACE</span><h2>FEATURED CLIPS</h2><p>Preview the moment. Own the original quality.</p></div></div>
+      <div class="clip-grid" id="clipGrid"><p class="loading">Loading clips...</p></div>
     </section>
 
     <section class="section how">
-      <span class="kicker">HOW SIDECAM WORKS</span>
-      <h2>FROM THE COURT<br>TO YOUR CAMERA ROLL.</h2>
-
+      <span class="kicker">HOW SIDECAM WORKS</span><h2>FROM THE COURT<br>TO YOUR CAMERA ROLL.</h2>
       <div class="steps">
         <article><b>01</b><h3>WE CAPTURE</h3><p>Matches are filmed in high quality with a player-first approach.</p></article>
         <article><b>02</b><h3>YOU FIND</h3><p>Choose the match and discover the moments that belong to you.</p></article>
@@ -143,53 +156,203 @@
     </section>
 
     <section class="pricing section" id="pricing">
-      <div>
-        <span class="kicker">SIMPLE PRICING</span>
-        <h2>ONE MOMENT.<br><strong>YOURS FOREVER.</strong></h2>
-      </div>
-
-      <div class="price-card">
-        <small>INDIVIDUAL CLIP</small>
-        <strong>2.000 <i>KD</i></strong>
-        <p>High-resolution digital clip<br>Instant access after purchase</p>
-        <a class="primary-btn" href="#clips">BROWSE CLIPS →</a>
-      </div>
+      <div><span class="kicker">SIMPLE PRICING</span><h2>ONE MOMENT.<br><strong>YOURS FOREVER.</strong></h2></div>
+      <div class="price-card"><small>INDIVIDUAL CLIP</small><strong>2.000 <i>KD</i></strong><p>High-resolution digital clip<br>Instant access after purchase</p><a class="primary-btn" href="#clips">BROWSE CLIPS →</a></div>
     </section>
   </main>
 
-  <footer>
-    <div class="brand">
-      <span class="brand-mark">S</span>
-      <span class="brand-name">SIDECAM</span>
-      <small>KUWAIT</small>
-    </div>
-    <p>BUILT FOR THE PLAYERS OF KUWAIT.</p>
-  </footer>
+  <footer><div class="brand"><span class="brand-mark">S</span><span class="brand-name">SIDECAM</span><small>KUWAIT</small></div><p>BUILT FOR THE PLAYERS OF KUWAIT.</p></footer>
 
   <div class="modal" id="clipModal" aria-hidden="true">
     <div class="modal-card">
       <button class="close" id="closeModal" aria-label="Close">×</button>
-      <div class="video-stage" id="videoStage">
-        <span>▶</span>
-        <small>PREVIEW</small>
-      </div>
+      <div class="video-stage"><span>▶</span><small>PREVIEW</small></div>
       <div class="modal-info">
-        <div>
-          <span class="kicker" id="modalType"></span>
-          <h3 id="modalTitle"></h3>
-          <p id="modalMeta"></p>
-        </div>
-        <div class="buy">
-          <strong id="modalPrice">2.000 KD</strong>
-          <button class="primary-btn" id="addCart">ADD TO CART</button>
-        </div>
+        <div><span class="kicker" id="modalType"></span><h3 id="modalTitle"></h3><p id="modalMeta"></p></div>
+        <div class="buy"><strong id="modalPrice">2.000 KD</strong><button class="primary-btn" id="addCart">ADD TO CART</button></div>
       </div>
     </div>
   </div>
 
   <div class="toast" id="toast">Added to cart</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/appwrite@27.0.0"></script>
-  <script src="script.js"></script>
+  <script>
+    const PROJECT_ID = '6aa9c83f001baf62e817';
+    const ENDPOINT = 'https://fra.cloud.appwrite.io/v1';
+    const DATABASE_ID = '6aa9c8c0001edf97de19';
+    const MATCHES_TABLE_ID = '6aa9c8df0036872a58d8';
+    const CLIPS_TABLE_ID = '6aa9c9320030cabeb298';
+
+    let matches = [];
+    let clips = [];
+    let cart = 0;
+    let selectedClip = null;
+
+    const $ = (selector) => document.querySelector(selector);
+
+    function esc(value='') {
+      return String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#039;");
+    }
+
+    function formatDate(value) {
+      if (!value) return '';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+    }
+
+    function money(value) {
+      const n = Number(value ?? 2);
+      return Number.isFinite(n) ? `${n.toFixed(3)} KD` : '2.000 KD';
+    }
+
+    async function listRows(tableId) {
+      const url = `${ENDPOINT}/tablesdb/${DATABASE_ID}/tables/${tableId}/rows`;
+      const res = await fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'X-Appwrite-Project': PROJECT_ID,
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!res.ok) {
+        let detail = '';
+        try { detail = await res.text(); } catch {}
+        throw new Error(`Appwrite ${res.status}: ${detail}`);
+      }
+      return res.json();
+    }
+
+    function renderMatches() {
+      const grid = $('#matchGrid');
+      const select = $('#matchSelect');
+
+      if (!matches.length) {
+        grid.innerHTML = '<p class="empty">No matches available yet.</p>';
+        return;
+      }
+
+      grid.innerHTML = matches.map(m => `
+        <article class="match-card" data-match-id="${esc(m.$id)}">
+          <div class="match-image"><span class="date">${formatDate(m.match_date)}</span></div>
+          <div class="match-body">
+            <span class="kicker">MATCH</span>
+            <h3>${esc(m.title || `${m.home_team || ''} vs ${m.away_team || ''}`)}</h3>
+            <p>${esc(m.competition || '')}${m.venue ? ` · ${esc(m.venue)}` : ''}</p>
+          </div>
+        </article>
+      `).join('');
+
+      select.innerHTML = '<option value="">Choose a match</option>' + matches.map(m =>
+        `<option value="${esc(m.$id)}">${esc(m.title || `${m.home_team || ''} vs ${m.away_team || ''}`)}</option>`
+      ).join('');
+    }
+
+    function renderClips(list = clips) {
+      const grid = $('#clipGrid');
+
+      if (!list.length) {
+        grid.innerHTML = '<p class="empty">No clips available yet.</p>';
+        return;
+      }
+
+      grid.innerHTML = list.map(c => `
+        <article class="clip-card" data-clip-id="${esc(c.$id)}">
+          <div class="clip-image"><span class="tag">${esc((c.clip_type || 'highlight').toUpperCase())}</span></div>
+          <div class="clip-body">
+            <span class="kicker">${esc(c.team_name || 'SIDECAM')}</span>
+            <h3>${esc(c.title || 'Player Highlight')}</h3>
+            <p>${esc(c.player_name || '')}${c.jersey_number ? ` · #${esc(c.jersey_number)}` : ''}</p>
+            <div class="row"><span>${esc(c.match_name || '')}</span><strong class="price">${money(c.price)}</strong></div>
+          </div>
+        </article>
+      `).join('');
+
+      document.querySelectorAll('[data-clip-id]').forEach(card => {
+        card.addEventListener('click', () => openClip(card.dataset.clipId));
+      });
+    }
+
+    function openClip(id) {
+      selectedClip = clips.find(c => c.$id === id);
+      if (!selectedClip) return;
+      $('#modalType').textContent = (selectedClip.clip_type || 'highlight').toUpperCase();
+      $('#modalTitle').textContent = selectedClip.title || 'Player Highlight';
+      $('#modalMeta').textContent = [selectedClip.player_name, selectedClip.jersey_number ? `#${selectedClip.jersey_number}` : '', selectedClip.match_name].filter(Boolean).join(' · ');
+      $('#modalPrice').textContent = money(selectedClip.price);
+      $('#clipModal').classList.add('open');
+      $('#clipModal').setAttribute('aria-hidden','false');
+    }
+
+    function closeClip() {
+      $('#clipModal').classList.remove('open');
+      $('#clipModal').setAttribute('aria-hidden','true');
+    }
+
+    function toast(message) {
+      const t = $('#toast');
+      t.textContent = message;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1800);
+    }
+
+    async function loadData() {
+      try {
+        const [mRes, cRes] = await Promise.all([
+          listRows(MATCHES_TABLE_ID),
+          listRows(CLIPS_TABLE_ID)
+        ]);
+
+        matches = mRes.rows || [];
+        clips = (cRes.rows || []).filter(c => c.status ? c.status === 'published' : c.is_published !== false);
+
+        console.log('✅ SideCam connected to Appwrite');
+        console.log('Matches:', matches);
+        console.log('Clips:', clips);
+
+        renderMatches();
+        renderClips();
+      } catch (error) {
+        console.error('❌ SideCam Appwrite error:', error);
+        $('#matchGrid').innerHTML = '<p class="error">Unable to load matches.</p>';
+        $('#clipGrid').innerHTML = '<p class="error">Unable to load clips.</p>';
+      }
+    }
+
+    $('#finderForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const matchId = $('#matchSelect').value;
+      const jersey = $('#jerseyNumber').value.trim();
+      const msg = $('#finderMessage');
+
+      if (!matchId || !jersey) {
+        msg.textContent = 'Choose a match and enter your jersey number.';
+        return;
+      }
+
+      const filtered = clips.filter(c =>
+        String(c.match_id || '') === String(matchId) &&
+        String(c.jersey_number || '') === String(jersey)
+      );
+
+      renderClips(filtered);
+      msg.textContent = filtered.length ? `${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.` : 'No clips found for this number yet.';
+      $('#clips').scrollIntoView({behavior:'smooth'});
+    });
+
+    $('#closeModal').addEventListener('click', closeClip);
+    $('#clipModal').addEventListener('click', e => { if (e.target.id === 'clipModal') closeClip(); });
+    $('#addCart').addEventListener('click', () => {
+      cart += 1;
+      $('#cartCount').textContent = cart;
+      closeClip();
+      toast('Added to cart');
+    });
+    $('#cartBtn').addEventListener('click', () => toast(cart ? `${cart} item${cart===1?'':'s'} in cart` : 'Cart is empty'));
+
+    loadData();
+  </script>
 </body>
 </html>
