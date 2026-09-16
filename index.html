@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SideCam — cinematic futsal photography and video clips. Find your moments.">
+  <title>SideCam — Your Game. Your Moments.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SideCam home">
+      <span class="brand-mark">S</span>
+      <span>SIDECAM</span>
+    </a>
+    <nav class="nav">
+      <a href="#matches">Matches</a>
+      <a href="#clips">Clips</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#find">Find My Clips <span>↗</span></a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-media">
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+        <div class="court-lines"></div>
+        <div class="hero-noise"></div>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> FUTSAL / KUWAIT</p>
+        <h1>YOUR GAME.<br><em>YOUR MOMENTS.</em></h1>
+        <p class="hero-copy">We capture the speed, emotion and details of the game — so every player can find and own their best moments.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#find">Find My Clips <span>→</span></a>
+          <a class="btn btn-ghost" href="#matches">Explore Matches</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div><strong>01</strong><span>CAPTURE</span></div>
+        <div><strong>02</strong><span>FIND</span></div>
+        <div><strong>03</strong><span>OWN</span></div>
+      </div>
+      <div class="scroll-cue">SCROLL <span>↓</span></div>
+    </section>
+
+    <section class="ticker" aria-label="SideCam highlights">
+      <div>LIVE THE MOMENT</div><i>✦</i><div>CAPTURE THE GAME</div><i>✦</i><div>OWN YOUR CLIPS</div><i>✦</i><div>LIVE THE MOMENT</div>
+    </section>
+
+    <section class="section" id="find">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span></span> PLAYER SEARCH</p>
+          <h2>Find your <em>moments.</em></h2>
+        </div>
+        <p class="section-note">Search by player name or jersey number. The real search system will connect to the SideCam database.</p>
+      </div>
+      <form class="search-box" id="playerSearch">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search player name or jersey number…" autocomplete="off">
+        <button type="submit">SEARCH <span>→</span></button>
+      </form>
+      <div class="search-result" id="searchResult" hidden></div>
+    </section>
+
+    <section class="section matches" id="matches">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span></span> RECENT ACTION</p>
+          <h2>Latest <em>matches.</em></h2>
+        </div>
+        <a class="text-link" href="#matches">View all matches →</a>
+      </div>
+      <div class="match-grid">
+        <article class="match-card featured">
+          <div class="match-visual visual-one"><span class="match-status">LATEST</span><span class="match-date">15 SEP 2026</span></div>
+          <div class="match-info">
+            <div class="league">KUWAIT FUTSAL LEAGUE</div>
+            <div class="teams"><strong>AL QADSIA</strong><b>VS</b><strong>AL ARABI</strong></div>
+            <div class="match-footer"><span>48 clips available</span><a href="#clips">View clips →</a></div>
+          </div>
+        </article>
+        <article class="match-card">
+          <div class="match-visual visual-two"><span class="match-status">RECENT</span><span class="match-date">13 SEP 2026</span></div>
+          <div class="match-info">
+            <div class="league">FRIENDLY MATCH</div>
+            <div class="teams"><strong>KUWAIT SC</strong><b>VS</b><strong>AL SALMIYA</strong></div>
+            <div class="match-footer"><span>31 clips available</span><a href="#clips">View clips →</a></div>
+          </div>
+        </article>
+        <article class="match-card">
+          <div class="match-visual visual-three"><span class="match-status">RECENT</span><span class="match-date">11 SEP 2026</span></div>
+          <div class="match-info">
+            <div class="league">WEEKLY CUP</div>
+            <div class="teams"><strong>YARMOUK</strong><b>VS</b><strong>QURAIN</strong></div>
+            <div class="match-footer"><span>27 clips available</span><a href="#clips">View clips →</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section clips-section" id="clips">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span></span> THE GOOD STUFF</p>
+          <h2>Featured <em>clips.</em></h2>
+        </div>
+        <p class="section-note">A preview only — purchases and secure delivery will be connected in the next build.</p>
+      </div>
+      <div class="clip-grid">
+        <button class="clip-card clip-one" data-player="Ahmed" data-title="First touch & finish">
+          <span class="clip-play">▶</span><span class="clip-time">00:18</span>
+          <div class="clip-caption"><small>#10 / AHMED</small><strong>FIRST TOUCH & FINISH</strong></div>
+        </button>
+        <button class="clip-card clip-two" data-player="Yousef" data-title="Top corner">
+          <span class="clip-play">▶</span><span class="clip-time">00:12</span>
+          <div class="clip-caption"><small>#7 / YOUSEF</small><strong>TOP CORNER</strong></div>
+        </button>
+        <button class="clip-card clip-three" data-player="Fahad" data-title="The assist">
+          <span class="clip-play">▶</span><span class="clip-time">00:21</span>
+          <div class="clip-caption"><small>#11 / FAHAD</small><strong>THE ASSIST</strong></div>
+        </button>
+        <button class="clip-card clip-four" data-player="Omar" data-title="Match winner">
+          <span class="clip-play">▶</span><span class="clip-time">00:16</span>
+          <div class="clip-caption"><small>#9 / OMAR</small><strong>MATCH WINNER</strong></div>
+        </button>
+      </div>
+    </section>
+
+    <section class="process" id="how">
+      <div class="process-inner">
+        <div class="process-intro">
+          <p class="eyebrow"><span></span> HOW SIDECAM WORKS</p>
+          <h2>From the court<br>to <em>your phone.</em></h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span>01</span><h3>WE SHOOT</h3><p>Professional match coverage focused on the moments players actually want to keep.</p></div>
+          <div class="step"><span>02</span><h3>WE SORT</h3><p>Footage is organized by match and player so your moments are easy to find.</p></div>
+          <div class="step"><span>03</span><h3>YOU OWN</h3><p>Choose your clips, purchase them, and receive your original-quality files.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="cta-card">
+        <p class="eyebrow"><span></span> SIDECAM / KUWAIT</p>
+        <h2>Your next<br><em>highlight</em> is here.</h2>
+        <a class="btn btn-primary" href="#find">Find My Clips <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand"><span class="brand-mark">S</span><span>SIDECAM</span></div>
+    <p>Professional futsal coverage. Built for the players.</p>
+    <div class="footer-links"><a href="#">Instagram</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+    <small>© 2026 SideCam. All rights reserved.</small>
+  </footer>
+
+  <div class="modal" id="clipModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-preview"><span>VIDEO PREVIEW</span></div>
+      <p class="eyebrow"><span></span> CLIP PREVIEW</p>
+      <h3 id="modalTitle">First touch & finish</h3>
+      <p id="modalPlayer">Ahmed · #10</p>
+      <button class="btn btn-primary modal-buy">COMING SOON <span>→</span></button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
