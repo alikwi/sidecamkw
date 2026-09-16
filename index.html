@@ -311,7 +311,7 @@
         ]);
 
         matches = mRes.rows || [];
-        clips = (cRes.rows || []).filter(c => c.status ? c.status === 'published' : c.is_published !== false);
+        clips = cRes.rows || [];
 
         console.log('✅ SideCam connected to Appwrite');
         console.log('Matches:', matches);
@@ -354,7 +354,16 @@
       ].filter(Boolean);
 
       const filtered = clips.filter(c => {
-        const sameNumber = String(c.jersey_number || '') === String(jersey);
+        const storedNumber = String(c.jersey_number || '').trim();
+        const titleText = String(c.title || '');
+        const descriptionText = String(c.description || '');
+
+        // Prefer the real jersey_number column, but also accept #14 / 14
+        // inside the clip title or description for older rows.
+        const sameNumber =
+          storedNumber === String(jersey) ||
+          new RegExp(`(^|[^0-9])#?${jersey}([^0-9]|$)`).test(titleText) ||
+          new RegExp(`(^|[^0-9])#?${jersey}([^0-9]|$)`).test(descriptionText);
 
         const sameMatchId =
           c.match_id &&
@@ -365,12 +374,19 @@
           selectedTitle &&
           norm(c.match_name) === selectedTitle;
 
+        const clipTeam = norm(c.team_name);
         const sameTeamFallback =
-          !c.match_id &&
-          c.team_name &&
-          selectedTeams.includes(norm(c.team_name));
+          clipTeam &&
+          selectedTeams.includes(clipTeam);
 
         return sameNumber && (sameMatchId || sameMatchName || sameTeamFallback);
+      });
+
+      console.log('Finder:', {
+        matchId,
+        jersey,
+        totalClips: clips.length,
+        matchedClips: filtered
       });
 
       renderClips(filtered);
@@ -380,8 +396,9 @@
         const playerName = firstClip.player_name || 'Player';
         const teamName = firstClip.team_name || '';
         playerResult.innerHTML = `
+          <span>PLAYER FOUND</span>
           <strong>${esc(playerName)} #${esc(jersey)}</strong>
-          <span>${esc(teamName)}</span>
+          <span>${esc(teamName)} · ${filtered.length} CLIP${filtered.length === 1 ? '' : 'S'}</span>
         `;
         playerResult.classList.add('show');
         msg.textContent = `${playerName}: ${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.`;
