@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#020d0d" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#030a08">
   <title>SideCam Kuwait — Every Player. Every Moment.</title>
-  <meta name="description" content="SideCam Kuwait — discover your futsal matches, find your moments, and own your clips." />
+  <meta name="description" content="SideCam Kuwait — find your futsal match, discover your clips, and own your moments.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
+<body>
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="SideCam Kuwait home">
+    <a class="brand" href="#home">
       <span class="brand-mark">S</span>
       <span class="brand-name">SIDECAM</span>
       <small>KUWAIT</small>
     </a>
 
-    <nav class="nav" id="nav">
+    <nav class="nav">
       <a class="active" href="#home">HOME</a>
       <a href="#matches">MATCHES</a>
       <a href="#players">PLAYERS</a>
@@ -42,13 +42,22 @@
         <div class="eyebrow">FUTSAL / KUWAIT <span>EST. 2026</span></div>
         <h1>EVERY PLAYER.<br><strong>EVERY MOMENT.</strong></h1>
         <p>Professional futsal match footage, built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
+
         <div class="hero-actions">
           <a class="primary-btn" href="#players">FIND YOUR CLIPS →</a>
           <a class="secondary-btn" href="#matches">◉ WATCH LATEST MATCHES</a>
         </div>
+
+        <div class="hero-points">
+          <span>▣ <b>HD / 4K</b><small>HIGH QUALITY</small></span>
+          <span>♙ <b>PLAYER FOCUSED</b><small>EASY TO FIND</small></span>
+          <span>◇ <b>INSTANT ACCESS</b><small>GET YOUR CLIPS</small></span>
+          <span>◇ <b>SECURE PAYMENT</b><small>SAFE & SIMPLE</small></span>
+        </div>
       </div>
 
       <div class="hero-art" aria-hidden="true">
+        <div class="pitch-circle"></div>
         <div class="player-main">
           <div class="flag">🇰🇼</div>
           <div class="body"><span>10</span></div>
@@ -56,12 +65,15 @@
           <div class="leg l2"></div>
           <div class="ball">⬡</div>
         </div>
+
         <div class="player-goal">
           <div class="body light"><span>6</span></div>
           <div class="leg gl1"></div>
           <div class="leg gl2"></div>
         </div>
+
         <div class="goal-frame"></div>
+        <div class="hero-note">LOCAL<br>PLAYERS.<br>REAL<br>MOMENTS. 🇰🇼</div>
       </div>
     </section>
 
@@ -76,7 +88,7 @@
       </div>
 
       <div class="match-grid" id="matchGrid">
-        <p>Loading matches...</p>
+        <p class="loading">Loading matches...</p>
       </div>
     </section>
 
@@ -84,7 +96,7 @@
       <div class="finder-copy">
         <span class="kicker">PLAYER FINDER</span>
         <h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2>
-        <p>Start with your match and jersey number. SideCam will surface the clips tagged for you.</p>
+        <p>Choose your match and jersey number. SideCam will surface the clips tagged for you.</p>
       </div>
 
       <form class="finder-box" id="finderForm">
@@ -97,10 +109,11 @@
 
         <label>
           JERSEY NUMBER
-          <input id="jerseyNumber" type="number" min="0" max="99" placeholder="10">
+          <input id="jerseyNumber" type="number" min="0" max="99" placeholder="14">
         </label>
 
         <button type="submit" class="primary-btn">FIND MY CLIPS →</button>
+        <p class="finder-message" id="finderMessage"></p>
       </form>
     </section>
 
@@ -113,7 +126,9 @@
         </div>
       </div>
 
-      <div class="clip-grid" id="clipGrid"></div>
+      <div class="clip-grid" id="clipGrid">
+        <p class="loading">Loading clips...</p>
+      </div>
     </section>
 
     <section class="section how">
@@ -123,7 +138,7 @@
       <div class="steps">
         <article><b>01</b><h3>WE CAPTURE</h3><p>Matches are filmed in high quality with a player-first approach.</p></article>
         <article><b>02</b><h3>YOU FIND</h3><p>Choose the match and discover the moments that belong to you.</p></article>
-        <article><b>03</b><h3>YOU OWN</h3><p>Preview, purchase and get access to your selected clip.</p></article>
+        <article><b>03</b><h3>YOU OWN</h3><p>Preview, purchase, and get access to your selected clip.</p></article>
       </div>
     </section>
 
@@ -153,10 +168,10 @@
 
   <div class="modal" id="clipModal" aria-hidden="true">
     <div class="modal-card">
-      <button class="close" id="closeModal">×</button>
-      <div class="video-stage">
+      <button class="close" id="closeModal" aria-label="Close">×</button>
+      <div class="video-stage" id="videoStage">
         <span>▶</span>
-        <small>CLOUDFLARE STREAM READY</small>
+        <small>PREVIEW</small>
       </div>
       <div class="modal-info">
         <div>
@@ -165,7 +180,7 @@
           <p id="modalMeta"></p>
         </div>
         <div class="buy">
-          <strong>2.000 KD</strong>
+          <strong id="modalPrice">2.000 KD</strong>
           <button class="primary-btn" id="addCart">ADD TO CART</button>
         </div>
       </div>
@@ -175,6 +190,6 @@
   <div class="toast" id="toast">Added to cart</div>
 
   <script src="https://cdn.jsdelivr.net/npm/appwrite@27.0.0"></script>
-  <script src="sidecam-app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
