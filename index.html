@@ -67,6 +67,10 @@
     .finder-box label{font-size:10px;font-weight:800;letter-spacing:.1em;color:#9aa59e}
     .finder-box select,.finder-box input{display:block;width:100%;margin-top:8px;height:46px;padding:0 13px;background:#07100d;color:#fff;border:1px solid #2b3d33}
     .finder-message{min-height:18px;margin:0!important;color:#aab5ad!important}
+    .player-found{display:none;border:1px solid #2b3d33;background:#06100c;padding:14px 16px}
+    .player-found.show{display:block}
+    .player-found strong{display:block;font-family:"Barlow Condensed";font-size:28px;color:#fff}
+    .player-found span{display:block;color:var(--lime);font-size:11px;font-weight:800;letter-spacing:.08em;margin-top:4px}
     .clip-body .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
     .price{font-family:"Barlow Condensed";font-size:24px;color:var(--lime);font-weight:900}
     .how .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:35px;border-top:1px solid var(--line)}
@@ -137,6 +141,7 @@
         <label>MATCH<select id="matchSelect"><option value="">Choose a match</option></select></label>
         <label>JERSEY NUMBER<input id="jerseyNumber" type="number" min="0" max="99" placeholder="14"></label>
         <button type="submit" class="primary-btn">FIND MY CLIPS →</button>
+        <div class="player-found" id="playerResult"></div>
         <p class="finder-message" id="finderMessage"></p>
       </form>
     </section>
@@ -182,9 +187,11 @@
     const DATABASE_ID = '6aa9c8c0001edf97de19';
     const MATCHES_TABLE_ID = '6aa9c8df0036872a58d8';
     const CLIPS_TABLE_ID = '6aa9c9320030cabeb298';
+    const PLAYERS_TABLE_ID = '6aaa0c3c00110ecd2a07';
 
     let matches = [];
     let clips = [];
+    let players = [];
     let cart = 0;
     let selectedClip = null;
 
@@ -300,16 +307,19 @@
 
     async function loadData() {
       try {
-        const [mRes, cRes] = await Promise.all([
+        const [mRes, cRes, pRes] = await Promise.all([
           listRows(MATCHES_TABLE_ID),
-          listRows(CLIPS_TABLE_ID)
+          listRows(CLIPS_TABLE_ID),
+          listRows(PLAYERS_TABLE_ID)
         ]);
 
         matches = mRes.rows || [];
         clips = (cRes.rows || []).filter(c => c.status ? c.status === 'published' : c.is_published !== false);
+        players = pRes.rows || [];
 
         console.log('✅ SideCam connected to Appwrite');
         console.log('Matches:', matches);
+        console.log('Players:', players);
         console.log('Clips:', clips);
 
         renderMatches();
@@ -323,22 +333,68 @@
 
     $('#finderForm').addEventListener('submit', (e) => {
       e.preventDefault();
+
       const matchId = $('#matchSelect').value;
       const jersey = $('#jerseyNumber').value.trim();
       const msg = $('#finderMessage');
+      const playerResult = $('#playerResult');
+      const selectedMatch = matches.find(m => String(m.$id) === String(matchId));
+
+      playerResult.classList.remove('show');
+      playerResult.innerHTML = '';
 
       if (!matchId || !jersey) {
         msg.textContent = 'Choose a match and enter your jersey number.';
         return;
       }
 
-      const filtered = clips.filter(c =>
-        String(c.match_id || '') === String(matchId) &&
-        String(c.jersey_number || '') === String(jersey)
-      );
+      const player = players.find(p => {
+        const sameNumber = String(p.jersey_number || '') === String(jersey);
+        const sameMatch = String(p.match_id || '') === String(matchId);
+
+        // Fallback for older player rows if match_id was left empty.
+        const team = String(p.team_name || '').trim().toLowerCase();
+        const matchTeams = selectedMatch
+          ? [selectedMatch.home_team, selectedMatch.away_team]
+              .filter(Boolean)
+              .map(v => String(v).trim().toLowerCase())
+          : [];
+        const sameTeamFallback = !p.match_id && matchTeams.includes(team);
+
+        return sameNumber && (sameMatch || sameTeamFallback);
+      });
+
+      if (player) {
+        playerResult.innerHTML = `
+          <strong>${esc(player.name || 'Player')} #${esc(player.jersey_number || jersey)}</strong>
+          <span>${esc(player.team_name || '')}${player.position ? ` · ${esc(player.position)}` : ''}</span>
+        `;
+        playerResult.classList.add('show');
+      }
+
+      const filtered = clips.filter(c => {
+        const sameNumber = String(c.jersey_number || '') === String(jersey);
+        const sameMatchId = String(c.match_id || '') === String(matchId);
+        const sameMatchName = selectedMatch &&
+          !c.match_id &&
+          String(c.match_name || '').trim().toLowerCase() ===
+          String(selectedMatch.title || '').trim().toLowerCase();
+
+        return sameNumber && (sameMatchId || sameMatchName);
+      });
 
       renderClips(filtered);
-      msg.textContent = filtered.length ? `${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.` : 'No clips found for this number yet.';
+
+      if (player && filtered.length) {
+        msg.textContent = `${player.name}: ${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.`;
+      } else if (player) {
+        msg.textContent = `${player.name} found, but no published clips are linked yet.`;
+      } else if (filtered.length) {
+        msg.textContent = `${filtered.length} clip${filtered.length === 1 ? '' : 's'} found for jersey #${jersey}.`;
+      } else {
+        msg.textContent = `No player or clips found for jersey #${jersey} in this match.`;
+      }
+
       $('#clips').scrollIntoView({behavior:'smooth'});
     });
 
