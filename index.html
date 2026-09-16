@@ -187,11 +187,9 @@
     const DATABASE_ID = '6aa9c8c0001edf97de19';
     const MATCHES_TABLE_ID = '6aa9c8df0036872a58d8';
     const CLIPS_TABLE_ID = '6aa9c9320030cabeb298';
-    const PLAYERS_TABLE_ID = '6aaa0c3c00110ecd2a07';
 
     let matches = [];
     let clips = [];
-    let players = [];
     let cart = 0;
     let selectedClip = null;
 
@@ -307,19 +305,16 @@
 
     async function loadData() {
       try {
-        const [mRes, cRes, pRes] = await Promise.all([
+        const [mRes, cRes] = await Promise.all([
           listRows(MATCHES_TABLE_ID),
-          listRows(CLIPS_TABLE_ID),
-          listRows(PLAYERS_TABLE_ID)
+          listRows(CLIPS_TABLE_ID)
         ]);
 
         matches = mRes.rows || [];
         clips = (cRes.rows || []).filter(c => c.status ? c.status === 'published' : c.is_published !== false);
-        players = pRes.rows || [];
 
         console.log('✅ SideCam connected to Appwrite');
         console.log('Matches:', matches);
-        console.log('Players:', players);
         console.log('Clips:', clips);
 
         renderMatches();
@@ -348,51 +343,50 @@
         return;
       }
 
-      const player = players.find(p => {
-        const sameNumber = String(p.jersey_number || '') === String(jersey);
-        const sameMatch = String(p.match_id || '') === String(matchId);
+      const norm = (value) => String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\u0600-\u06ff]/g, '');
 
-        // Fallback for older player rows if match_id was left empty.
-        const team = String(p.team_name || '').trim().toLowerCase();
-        const matchTeams = selectedMatch
-          ? [selectedMatch.home_team, selectedMatch.away_team]
-              .filter(Boolean)
-              .map(v => String(v).trim().toLowerCase())
-          : [];
-        const sameTeamFallback = !p.match_id && matchTeams.includes(team);
-
-        return sameNumber && (sameMatch || sameTeamFallback);
-      });
-
-      if (player) {
-        playerResult.innerHTML = `
-          <strong>${esc(player.name || 'Player')} #${esc(player.jersey_number || jersey)}</strong>
-          <span>${esc(player.team_name || '')}${player.position ? ` · ${esc(player.position)}` : ''}</span>
-        `;
-        playerResult.classList.add('show');
-      }
+      const selectedTitle = norm(selectedMatch?.title);
+      const selectedTeams = [
+        norm(selectedMatch?.home_team),
+        norm(selectedMatch?.away_team)
+      ].filter(Boolean);
 
       const filtered = clips.filter(c => {
         const sameNumber = String(c.jersey_number || '') === String(jersey);
-        const sameMatchId = String(c.match_id || '') === String(matchId);
-        const sameMatchName = selectedMatch &&
-          !c.match_id &&
-          String(c.match_name || '').trim().toLowerCase() ===
-          String(selectedMatch.title || '').trim().toLowerCase();
 
-        return sameNumber && (sameMatchId || sameMatchName);
+        const sameMatchId =
+          c.match_id &&
+          String(c.match_id) === String(matchId);
+
+        const sameMatchName =
+          c.match_name &&
+          selectedTitle &&
+          norm(c.match_name) === selectedTitle;
+
+        const sameTeamFallback =
+          !c.match_id &&
+          c.team_name &&
+          selectedTeams.includes(norm(c.team_name));
+
+        return sameNumber && (sameMatchId || sameMatchName || sameTeamFallback);
       });
 
       renderClips(filtered);
 
-      if (player && filtered.length) {
-        msg.textContent = `${player.name}: ${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.`;
-      } else if (player) {
-        msg.textContent = `${player.name} found, but no published clips are linked yet.`;
-      } else if (filtered.length) {
-        msg.textContent = `${filtered.length} clip${filtered.length === 1 ? '' : 's'} found for jersey #${jersey}.`;
+      const firstClip = filtered[0];
+      if (firstClip) {
+        const playerName = firstClip.player_name || 'Player';
+        const teamName = firstClip.team_name || '';
+        playerResult.innerHTML = `
+          <strong>${esc(playerName)} #${esc(jersey)}</strong>
+          <span>${esc(teamName)}</span>
+        `;
+        playerResult.classList.add('show');
+        msg.textContent = `${playerName}: ${filtered.length} clip${filtered.length === 1 ? '' : 's'} found.`;
       } else {
-        msg.textContent = `No player or clips found for jersey #${jersey} in this match.`;
+        msg.textContent = `No clips found for jersey #${jersey} in this match.`;
       }
 
       $('#clips').scrollIntoView({behavior:'smooth'});
