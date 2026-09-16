@@ -3,146 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080b0d">
-  <meta name="description" content="SideCam Kuwait — cinematic futsal moments. Find your match, find your player, own your clip.">
+  <meta name="theme-color" content="#080d0d">
   <title>SideCam Kuwait — Every Player. Every Moment.</title>
+  <meta name="description" content="SideCam Kuwait — discover your futsal matches, find your moments, and own your clips.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="grain"></div>
 <header class="topbar">
-  <a class="logo" href="#home"><span class="logo-box">S</span><span>SIDECAM</span><small>KUWAIT</small></a>
-  <nav id="nav">
-    <a href="#home" class="active">Home</a><a href="#matches">Matches</a><a href="#players">Players</a><a href="#clips">Clips</a>
+  <a class="brand" href="#home" aria-label="SideCam Kuwait home">
+    <span class="brand-mark">S</span>
+    <span class="brand-name">SIDECAM</span>
+    <small>KUWAIT</small>
+  </a>
+  <nav class="nav" id="nav">
+    <a class="active" href="#home">HOME</a><a href="#matches">MATCHES</a>
+    <a href="#players">PLAYERS</a><a href="#clips">CLIPS</a><a href="#pricing">PRICING</a>
   </nav>
-  <div class="top-actions">
-    <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
-    <button class="cart-btn" id="cartBtn" aria-label="Cart">CART <b id="cartCount">0</b></button>
-    <a class="find-btn" href="#players">Find my clips <span>↗</span></a>
+  <div class="nav-actions">
+    <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+    <button class="cart-btn" id="cartBtn">CART <b id="cartCount">0</b></button>
+    <a class="outline-btn" href="#players">FIND MY CLIPS <span>↗</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
   </div>
-  <button class="menu" id="menuBtn" aria-label="Menu">☰</button>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <div class="hero-grid"></div><div class="hero-glow"></div><div class="ball"></div>
-  <div class="hero-copy">
-    <p class="kicker"><i></i> FUTSAL / KUWAIT <span>EST. 2026</span></p>
-    <h1>EVERY PLAYER.<br><em>EVERY MOMENT.</em></h1>
-    <p class="lede">Professional match footage built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
-    <div class="hero-actions">
-      <a class="primary" href="#players">Find your clips <span>→</span></a>
-      <a class="secondary" href="#matches">Explore matches</a>
+  <div class="hero-photo" aria-hidden="true">
+    <div class="flag"><i></i><i></i><i></i><b></b></div>
+    <div class="goal"></div>
+    <div class="player p10"><span class="head"></span><span class="torso">10</span><span class="leg l1"></span><span class="leg l2"></span></div>
+    <div class="player defender"><span class="head"></span><span class="torso">6</span><span class="leg l1"></span><span class="leg l2"></span></div>
+    <div class="ball">⬡</div>
+    <div class="kuwait-word">KUWAIT<br><em>PLAYS DIFFERENT</em></div>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow"><span></span> FUTSAL / KUWAIT <small>EST. 2026</small></div>
+    <h1>EVERY PLAYER.<br><strong>EVERY MOMENT.</strong></h1>
+    <p>Professional futsal match footage, built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
+    <div class="hero-cta">
+      <a class="primary-btn" href="#players">FIND YOUR CLIPS <span>→</span></a>
+      <a class="secondary-btn" href="#matches"><span class="play">▶</span> WATCH LATEST MATCHES</a>
     </div>
-    <div class="trust"><span>● HD / 4K DELIVERY</span><span>● PLAYER-FOCUSED</span><span>● INSTANT ACCESS</span></div>
+    <div class="benefits">
+      <div><b>▣</b><span><strong>HD / 4K</strong><small>HIGH QUALITY</small></span></div>
+      <div><b>♙</b><span><strong>PLAYER FOCUSED</strong><small>EASY TO FIND</small></span></div>
+      <div><b>◈</b><span><strong>INSTANT ACCESS</strong><small>GET YOUR CLIPS</small></span></div>
+      <div><b>◇</b><span><strong>SECURE PAYMENT</strong><small>SAFE & SIMPLE</small></span></div>
+    </div>
   </div>
-  <aside class="hero-rail">
-    <span>01</span><b>CAPTURE</b><span>02</span><b>FIND</b><span>03</span><b>OWN</b>
-  </aside>
-  <div class="hero-stat"><strong>THE GAME<br>DOESN'T END<br>AT THE WHISTLE.</strong><span>SCROLL ↓</span></div>
+  <aside class="side-copy">LOCAL<br>PLAYERS<br>REAL<br>MOMENTS <span>🇰🇼</span></aside>
 </section>
 
-<section class="quick-search" id="players">
-  <div><p class="kicker"><i></i> PLAYER FINDER</p><h2>FIND <em>YOUR MOMENT.</em></h2></div>
-  <form id="playerSearch">
-    <span>⌕</span><input id="searchInput" placeholder="Player name, jersey number or team…" autocomplete="off">
-    <button>SEARCH →</button>
+<section class="matches section" id="matches">
+  <div class="section-head">
+    <div><span class="kicker">THE ARCHIVE</span><h2>RECENT MATCHES</h2><p>Browse the latest games and find your highlights.</p></div>
+    <button class="text-btn" id="viewAll">VIEW ALL MATCHES →</button>
+  </div>
+  <div class="match-grid" id="matchGrid"></div>
+</section>
+
+<section class="finder section" id="players">
+  <div class="finder-copy">
+    <span class="kicker">PLAYER FINDER</span>
+    <h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2>
+    <p>Start with your match and jersey number. SideCam will surface the clips tagged for you.</p>
+  </div>
+  <form class="finder-box" id="finderForm">
+    <label>MATCH<select id="matchSelect"><option value="">Choose a match</option></select></label>
+    <label>JERSEY NUMBER<input id="jersey" type="number" min="1" max="99" placeholder="10" required></label>
+    <button class="primary-btn" type="submit">FIND MY CLIPS →</button>
+    <p id="finderResult"></p>
   </form>
-  <div id="searchResult" class="search-result" hidden></div>
 </section>
 
-<section class="section" id="matches">
-  <div class="section-title">
-    <div><p class="kicker"><i></i> MATCH ARCHIVE</p><h2>FEATURED <em>MATCHES</em></h2></div>
-    <a href="#matches">VIEW ALL <span>→</span></a>
+<section class="clips section" id="clips">
+  <div class="section-head">
+    <div><span class="kicker">MARKETPLACE</span><h2>FEATURED CLIPS</h2><p>Preview the moment. Own the original quality.</p></div>
+    <div class="filters" id="filters">
+      <button class="active" data-filter="ALL">ALL</button><button data-filter="GOAL">GOALS</button>
+      <button data-filter="SKILL">SKILLS</button><button data-filter="ASSIST">ASSISTS</button><button data-filter="SAVE">SAVES</button>
+    </div>
   </div>
-  <div class="match-grid">
-    <article class="match-card main-match">
-      <div class="visual v1"><span class="badge">LATEST</span><span class="date">15 SEP 2026</span><div class="score-watermark">VS</div></div>
-      <div class="match-body"><small>KUWAIT FUTSAL LEAGUE</small><div class="versus"><strong>AL QADSIA</strong><b>VS</b><strong>AL ARABI</strong></div><footer><span>48 MOMENTS</span><button class="open-match">VIEW MATCH ↗</button></footer></div>
-    </article>
-    <article class="match-card">
-      <div class="visual v2"><span class="badge muted">RECENT</span><span class="date">13 SEP 2026</span></div>
-      <div class="match-body"><small>FRIENDLY MATCH</small><div class="versus"><strong>KUWAIT SC</strong><b>VS</b><strong>AL SALMIYA</strong></div><footer><span>31 MOMENTS</span><button class="open-match">VIEW MATCH ↗</button></footer></div>
-    </article>
-    <article class="match-card">
-      <div class="visual v3"><span class="badge muted">RECENT</span><span class="date">11 SEP 2026</span></div>
-      <div class="match-body"><small>WEEKLY CUP</small><div class="versus"><strong>YARMOUK</strong><b>VS</b><strong>QURAIN</strong></div><footer><span>27 MOMENTS</span><button class="open-match">VIEW MATCH ↗</button></footer></div>
-    </article>
-  </div>
+  <div class="clip-grid" id="clipGrid"></div>
 </section>
 
-<section class="section clips" id="clips">
-  <div class="section-title">
-    <div><p class="kicker"><i></i> MARKETPLACE</p><h2>LATEST <em>CLIPS</em></h2></div>
-    <div class="filters" id="filters"><button class="on" data-filter="all">ALL</button><button data-filter="goal">GOALS</button><button data-filter="skill">SKILLS</button><button data-filter="assist">ASSISTS</button><button data-filter="save">SAVES</button></div>
-  </div>
-  <div class="clip-grid" id="clipGrid">
-    <article class="clip-card" data-type="goal" data-player="Ali Hassan" data-number="10" data-title="Match Winner" data-price="2.000">
-      <button class="thumb t1 preview"><span class="play">▶</span><span class="duration">00:18</span><span class="type">GOAL</span></button>
-      <div class="clip-info"><div><small>#10 · AL QADSIA</small><h3>ALI HASSAN</h3><p>Al Qadsia vs Al Arabi</p></div><div class="buy"><strong>2.000 <small>KD</small></strong><button class="add-cart">＋</button></div></div>
-    </article>
-    <article class="clip-card" data-type="skill" data-player="Mohammed" data-number="7" data-title="1v1 Skill" data-price="2.000">
-      <button class="thumb t2 preview"><span class="play">▶</span><span class="duration">00:22</span><span class="type">SKILL</span></button>
-      <div class="clip-info"><div><small>#7 · KAZMA</small><h3>MOHAMMED</h3><p>Kazma vs Al Salmiya</p></div><div class="buy"><strong>2.000 <small>KD</small></strong><button class="add-cart">＋</button></div></div>
-    </article>
-    <article class="clip-card" data-type="save" data-player="Bader" data-number="1" data-title="Reflex Save" data-price="2.000">
-      <button class="thumb t3 preview"><span class="play">▶</span><span class="duration">00:15</span><span class="type">SAVE</span></button>
-      <div class="clip-info"><div><small>#1 · YARMOUK</small><h3>BADER</h3><p>Yarmouk vs Al Nasr</p></div><div class="buy"><strong>2.000 <small>KD</small></strong><button class="add-cart">＋</button></div></div>
-    </article>
-    <article class="clip-card" data-type="assist" data-player="Yousef" data-number="11" data-title="Perfect Assist" data-price="2.000">
-      <button class="thumb t4 preview"><span class="play">▶</span><span class="duration">00:20</span><span class="type">ASSIST</span></button>
-      <div class="clip-info"><div><small>#11 · AL KUWAIT</small><h3>YOUSEF</h3><p>Al Kuwait vs Al Fahaheel</p></div><div class="buy"><strong>2.000 <small>KD</small></strong><button class="add-cart">＋</button></div></div>
-    </article>
+<section class="how section">
+  <span class="kicker">HOW SIDECAM WORKS</span><h2>FROM THE COURT<br>TO YOUR CAMERA ROLL.</h2>
+  <div class="steps">
+    <article><b>01</b><h3>WE CAPTURE</h3><p>Matches are filmed in high quality with a player-first approach.</p></article>
+    <article><b>02</b><h3>YOU FIND</h3><p>Choose the match and discover the moments that belong to you.</p></article>
+    <article><b>03</b><h3>YOU OWN</h3><p>Preview, purchase and get access to your selected clip.</p></article>
   </div>
 </section>
 
-<section class="manifesto">
-  <div class="camera-lines"></div>
-  <div><p class="kicker"><i></i> BUILT FOR PLAYERS</p><h2>YOUR MOMENTS<br><em>DESERVE MORE.</em></h2><p>Not a full-match archive. A personal highlight marketplace — organized around the people on the court.</p><a class="primary" href="#players">FIND YOUR CLIPS →</a></div>
-  <div class="numbers"><div><strong>01</strong><span>SELECT YOUR MATCH</span></div><div><strong>02</strong><span>FIND YOUR PLAYER</span></div><div><strong>03</strong><span>PREVIEW & OWN</span></div></div>
-</section>
-
-<section class="section workflow">
-  <p class="kicker"><i></i> HOW IT WORKS</p>
-  <div class="workflow-grid">
-    <div><b>01</b><h3>WE CAPTURE</h3><p>Cinematic match coverage focused on individual player moments.</p></div>
-    <div><b>02</b><h3>YOU FIND</h3><p>Search by match, player, team or jersey number.</p></div>
-    <div><b>03</b><h3>YOU PREVIEW</h3><p>Watch your moment before choosing the clip you want.</p></div>
-    <div><b>04</b><h3>YOU OWN</h3><p>Purchase and receive the high-quality version ready to keep and share.</p></div>
-  </div>
+<section class="pricing section" id="pricing">
+  <div><span class="kicker">SIMPLE PRICING</span><h2>ONE MOMENT.<br><strong>YOURS FOREVER.</strong></h2></div>
+  <div class="price-card"><small>INDIVIDUAL CLIP</small><strong>2.000 <i>KD</i></strong><p>High-resolution digital clip<br>Instant access after purchase</p><a class="primary-btn" href="#clips">BROWSE CLIPS →</a></div>
 </section>
 </main>
 
-<footer>
-  <a class="logo" href="#home"><span class="logo-box">S</span><span>SIDECAM</span></a>
-  <p>THE GAME LIVES ON.</p>
-  <div><a href="#">INSTAGRAM</a><a href="#">TERMS</a><a href="#">PRIVACY</a></div>
-  <small>© 2026 SIDECAM KUWAIT</small>
-</footer>
+<footer><div class="brand"><span class="brand-mark">S</span><span class="brand-name">SIDECAM</span><small>KUWAIT</small></div><p>BUILT FOR THE PLAYERS OF KUWAIT.</p><small>© 2026 SIDECAM KUWAIT</small></footer>
 
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="backdrop"></div>
+<div class="modal" id="clipModal" aria-hidden="true">
   <div class="modal-card">
-    <button class="close">×</button>
-    <div class="video-demo"><div class="video-mark">SIDECAM</div><button>▶</button><span>PREVIEW / CLOUDFLARE STREAM READY</span></div>
-    <div class="modal-content">
-      <p class="kicker"><i></i> PLAYER MOMENT</p><h2 id="modalTitle">MATCH WINNER</h2>
-      <div class="modal-meta"><span id="modalPlayer">#10 · ALI HASSAN</span><span>15 SEP 2026</span><span>AL QADSIA vs AL ARABI</span></div>
-      <div class="checkout"><div><small>CLIP PRICE</small><strong id="modalPrice">2.000 KD</strong></div><button id="modalCart">ADD TO CART →</button></div>
-    </div>
+    <button class="close" id="closeModal">×</button>
+    <div class="video-stage"><span>▶</span><small>CLOUDFLARE STREAM READY</small></div>
+    <div class="modal-info"><div><span class="kicker" id="modalType"></span><h3 id="modalTitle"></h3><p id="modalMeta"></p></div><div class="buy"><strong>2.000 KD</strong><button class="primary-btn" id="addCart">ADD TO CART →</button></div></div>
   </div>
 </div>
-
-<div class="cart-drawer" id="cartDrawer">
-  <div class="drawer-head"><h3>YOUR CLIPS</h3><button id="cartClose">×</button></div>
-  <div id="cartItems" class="cart-items"><p class="empty">Your cart is empty.</p></div>
-  <div class="drawer-foot"><div><span>TOTAL</span><strong id="cartTotal">0.000 KD</strong></div><button>CHECKOUT — COMING NEXT</button></div>
-</div>
-<div class="toast" id="toast">Clip added to cart</div>
+<div class="toast" id="toast">Added to cart</div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>

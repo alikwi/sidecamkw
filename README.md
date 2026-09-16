@@ -1,22 +1,25 @@
-# SideCam — V2
+# SideCam — V3
 
-Professional static front-end prototype for sidecamkw.com.
+Cinematic Kuwait-focused futsal marketplace prototype for sidecamkw.com.
 
-## V2
-- Premium cinematic sports direction
-- Responsive desktop/mobile layout
+## V3
+- Kuwait-localized cinematic sports art direction
+- Futsal court / player / ball visual composition built in CSS
+- Subtle Kuwait flag detail
+- Recent match archive
 - Player finder demo
-- Featured match archive
 - Filterable clip marketplace
 - Clip preview modal
-- Working demo cart
-- Cloudflare Stream-ready preview area
-- Appwrite Sites compatible with no npm/build step
+- Demo cart
+- Responsive desktop/mobile
+- Static deployment: no npm/build command required
 
-## Appwrite Sites settings
-Install command: leave blank
-Build command: leave blank
-Output directory: ./
-Fallback file: index.html
+## Appwrite Site settings
+- Framework: Other
+- Root directory: ./
+- Install command: leave empty
+- Build command: leave empty
+- Output directory: ./
+- Fallback file: index.html
 
-This is the front-end V2. Live database, authentication, payment and Cloudflare Stream playback/upload wiring are backend phases.
+Next integration stage: Cloudflare Stream playback + Appwrite database/auth + real match/player/clip data + checkout.
