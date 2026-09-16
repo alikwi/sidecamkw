@@ -1,123 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080d0d">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#020d0d" />
   <title>SideCam Kuwait — Every Player. Every Moment.</title>
-  <meta name="description" content="SideCam Kuwait — discover your futsal matches, find your moments, and own your clips.">
+  <meta name="description" content="SideCam Kuwait — discover your futsal matches, find your moments, and own your clips." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#home" aria-label="SideCam Kuwait home">
-    <span class="brand-mark">S</span>
-    <span class="brand-name">SIDECAM</span>
-    <small>KUWAIT</small>
-  </a>
-  <nav class="nav" id="nav">
-    <a class="active" href="#home">HOME</a><a href="#matches">MATCHES</a>
-    <a href="#players">PLAYERS</a><a href="#clips">CLIPS</a><a href="#pricing">PRICING</a>
-  </nav>
-  <div class="nav-actions">
-    <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
-    <button class="cart-btn" id="cartBtn">CART <b id="cartCount">0</b></button>
-    <a class="outline-btn" href="#players">FIND MY CLIPS <span>↗</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-  </div>
-</header>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-photo" aria-hidden="true">
-    <div class="flag"><i></i><i></i><i></i><b></b></div>
-    <div class="goal"></div>
-    <div class="player p10"><span class="head"></span><span class="torso">10</span><span class="leg l1"></span><span class="leg l2"></span></div>
-    <div class="player defender"><span class="head"></span><span class="torso">6</span><span class="leg l1"></span><span class="leg l2"></span></div>
-    <div class="ball">⬡</div>
-    <div class="kuwait-word">KUWAIT<br><em>PLAYS DIFFERENT</em></div>
-  </div>
-  <div class="hero-content">
-    <div class="eyebrow"><span></span> FUTSAL / KUWAIT <small>EST. 2026</small></div>
-    <h1>EVERY PLAYER.<br><strong>EVERY MOMENT.</strong></h1>
-    <p>Professional futsal match footage, built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
-    <div class="hero-cta">
-      <a class="primary-btn" href="#players">FIND YOUR CLIPS <span>→</span></a>
-      <a class="secondary-btn" href="#matches"><span class="play">▶</span> WATCH LATEST MATCHES</a>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="SideCam Kuwait home">
+      <span class="brand-mark">S</span>
+      <span class="brand-name">SIDECAM</span>
+      <small>KUWAIT</small>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a class="active" href="#home">HOME</a>
+      <a href="#matches">MATCHES</a>
+      <a href="#players">PLAYERS</a>
+      <a href="#clips">CLIPS</a>
+      <a href="#pricing">PRICING</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search">⌕</button>
+      <button class="cart-btn" id="cartBtn">CART <b id="cartCount">0</b></button>
+      <a class="outline-btn" href="#players">FIND MY CLIPS ↗</a>
     </div>
-    <div class="benefits">
-      <div><b>▣</b><span><strong>HD / 4K</strong><small>HIGH QUALITY</small></span></div>
-      <div><b>♙</b><span><strong>PLAYER FOCUSED</strong><small>EASY TO FIND</small></span></div>
-      <div><b>◈</b><span><strong>INSTANT ACCESS</strong><small>GET YOUR CLIPS</small></span></div>
-      <div><b>◇</b><span><strong>SECURE PAYMENT</strong><small>SAFE & SIMPLE</small></span></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow">FUTSAL / KUWAIT <span>EST. 2026</span></div>
+        <h1>EVERY PLAYER.<br><strong>EVERY MOMENT.</strong></h1>
+        <p>Professional futsal match footage, built around the player. Find your game, discover your moments, and keep the clips that matter.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#players">FIND YOUR CLIPS →</a>
+          <a class="secondary-btn" href="#matches">◉ WATCH LATEST MATCHES</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="player-main">
+          <div class="flag">🇰🇼</div>
+          <div class="body"><span>10</span></div>
+          <div class="leg l1"></div>
+          <div class="leg l2"></div>
+          <div class="ball">⬡</div>
+        </div>
+        <div class="player-goal">
+          <div class="body light"><span>6</span></div>
+          <div class="leg gl1"></div>
+          <div class="leg gl2"></div>
+        </div>
+        <div class="goal-frame"></div>
+      </div>
+    </section>
+
+    <section class="section" id="matches">
+      <div class="section-head">
+        <div>
+          <span class="kicker">THE ARCHIVE</span>
+          <h2>RECENT MATCHES</h2>
+          <p>Browse the latest games and find your highlights.</p>
+        </div>
+        <a href="#matches">VIEW ALL MATCHES →</a>
+      </div>
+
+      <div class="match-grid" id="matchGrid">
+        <p>Loading matches...</p>
+      </div>
+    </section>
+
+    <section class="finder section" id="players">
+      <div class="finder-copy">
+        <span class="kicker">PLAYER FINDER</span>
+        <h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2>
+        <p>Start with your match and jersey number. SideCam will surface the clips tagged for you.</p>
+      </div>
+
+      <form class="finder-box" id="finderForm">
+        <label>
+          MATCH
+          <select id="matchSelect">
+            <option value="">Choose a match</option>
+          </select>
+        </label>
+
+        <label>
+          JERSEY NUMBER
+          <input id="jerseyNumber" type="number" min="0" max="99" placeholder="10">
+        </label>
+
+        <button type="submit" class="primary-btn">FIND MY CLIPS →</button>
+      </form>
+    </section>
+
+    <section class="section" id="clips">
+      <div class="section-head">
+        <div>
+          <span class="kicker">MARKETPLACE</span>
+          <h2>FEATURED CLIPS</h2>
+          <p>Preview the moment. Own the original quality.</p>
+        </div>
+      </div>
+
+      <div class="clip-grid" id="clipGrid"></div>
+    </section>
+
+    <section class="section how">
+      <span class="kicker">HOW SIDECAM WORKS</span>
+      <h2>FROM THE COURT<br>TO YOUR CAMERA ROLL.</h2>
+
+      <div class="steps">
+        <article><b>01</b><h3>WE CAPTURE</h3><p>Matches are filmed in high quality with a player-first approach.</p></article>
+        <article><b>02</b><h3>YOU FIND</h3><p>Choose the match and discover the moments that belong to you.</p></article>
+        <article><b>03</b><h3>YOU OWN</h3><p>Preview, purchase and get access to your selected clip.</p></article>
+      </div>
+    </section>
+
+    <section class="pricing section" id="pricing">
+      <div>
+        <span class="kicker">SIMPLE PRICING</span>
+        <h2>ONE MOMENT.<br><strong>YOURS FOREVER.</strong></h2>
+      </div>
+
+      <div class="price-card">
+        <small>INDIVIDUAL CLIP</small>
+        <strong>2.000 <i>KD</i></strong>
+        <p>High-resolution digital clip<br>Instant access after purchase</p>
+        <a class="primary-btn" href="#clips">BROWSE CLIPS →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand">
+      <span class="brand-mark">S</span>
+      <span class="brand-name">SIDECAM</span>
+      <small>KUWAIT</small>
+    </div>
+    <p>BUILT FOR THE PLAYERS OF KUWAIT.</p>
+  </footer>
+
+  <div class="modal" id="clipModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" id="closeModal">×</button>
+      <div class="video-stage">
+        <span>▶</span>
+        <small>CLOUDFLARE STREAM READY</small>
+      </div>
+      <div class="modal-info">
+        <div>
+          <span class="kicker" id="modalType"></span>
+          <h3 id="modalTitle"></h3>
+          <p id="modalMeta"></p>
+        </div>
+        <div class="buy">
+          <strong>2.000 KD</strong>
+          <button class="primary-btn" id="addCart">ADD TO CART</button>
+        </div>
+      </div>
     </div>
   </div>
-  <aside class="side-copy">LOCAL<br>PLAYERS<br>REAL<br>MOMENTS <span>🇰🇼</span></aside>
-</section>
 
-<section class="matches section" id="matches">
-  <div class="section-head">
-    <div><span class="kicker">THE ARCHIVE</span><h2>RECENT MATCHES</h2><p>Browse the latest games and find your highlights.</p></div>
-    <button class="text-btn" id="viewAll">VIEW ALL MATCHES →</button>
-  </div>
-  <div class="match-grid" id="matchGrid"></div>
-</section>
+  <div class="toast" id="toast">Added to cart</div>
 
-<section class="finder section" id="players">
-  <div class="finder-copy">
-    <span class="kicker">PLAYER FINDER</span>
-    <h2>YOUR NUMBER.<br><strong>YOUR MOMENTS.</strong></h2>
-    <p>Start with your match and jersey number. SideCam will surface the clips tagged for you.</p>
-  </div>
-  <form class="finder-box" id="finderForm">
-    <label>MATCH<select id="matchSelect"><option value="">Choose a match</option></select></label>
-    <label>JERSEY NUMBER<input id="jersey" type="number" min="1" max="99" placeholder="10" required></label>
-    <button class="primary-btn" type="submit">FIND MY CLIPS →</button>
-    <p id="finderResult"></p>
-  </form>
-</section>
-
-<section class="clips section" id="clips">
-  <div class="section-head">
-    <div><span class="kicker">MARKETPLACE</span><h2>FEATURED CLIPS</h2><p>Preview the moment. Own the original quality.</p></div>
-    <div class="filters" id="filters">
-      <button class="active" data-filter="ALL">ALL</button><button data-filter="GOAL">GOALS</button>
-      <button data-filter="SKILL">SKILLS</button><button data-filter="ASSIST">ASSISTS</button><button data-filter="SAVE">SAVES</button>
-    </div>
-  </div>
-  <div class="clip-grid" id="clipGrid"></div>
-</section>
-
-<section class="how section">
-  <span class="kicker">HOW SIDECAM WORKS</span><h2>FROM THE COURT<br>TO YOUR CAMERA ROLL.</h2>
-  <div class="steps">
-    <article><b>01</b><h3>WE CAPTURE</h3><p>Matches are filmed in high quality with a player-first approach.</p></article>
-    <article><b>02</b><h3>YOU FIND</h3><p>Choose the match and discover the moments that belong to you.</p></article>
-    <article><b>03</b><h3>YOU OWN</h3><p>Preview, purchase and get access to your selected clip.</p></article>
-  </div>
-</section>
-
-<section class="pricing section" id="pricing">
-  <div><span class="kicker">SIMPLE PRICING</span><h2>ONE MOMENT.<br><strong>YOURS FOREVER.</strong></h2></div>
-  <div class="price-card"><small>INDIVIDUAL CLIP</small><strong>2.000 <i>KD</i></strong><p>High-resolution digital clip<br>Instant access after purchase</p><a class="primary-btn" href="#clips">BROWSE CLIPS →</a></div>
-</section>
-</main>
-
-<footer><div class="brand"><span class="brand-mark">S</span><span class="brand-name">SIDECAM</span><small>KUWAIT</small></div><p>BUILT FOR THE PLAYERS OF KUWAIT.</p><small>© 2026 SIDECAM KUWAIT</small></footer>
-
-<div class="modal" id="clipModal" aria-hidden="true">
-  <div class="modal-card">
-    <button class="close" id="closeModal">×</button>
-    <div class="video-stage"><span>▶</span><small>CLOUDFLARE STREAM READY</small></div>
-    <div class="modal-info"><div><span class="kicker" id="modalType"></span><h3 id="modalTitle"></h3><p id="modalMeta"></p></div><div class="buy"><strong>2.000 KD</strong><button class="primary-btn" id="addCart">ADD TO CART →</button></div></div>
-  </div>
-</div>
-<div class="toast" id="toast">Added to cart</div>
-<script src="https://cdn.jsdelivr.net/npm/appwrite@17.0.0"></script>
-<script src="script.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@27.0.0"></script>
+  <script src="sidecam-app.js"></script>
 </body>
 </html>
