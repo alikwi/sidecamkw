@@ -1,25 +1,22 @@
-# SideCam — V1
+# SideCam — V2
 
-Static front-end prototype for sidecamkw.com.
+Professional static front-end prototype for sidecamkw.com.
 
-## Current V1
-- Cinematic dark sports visual direction
-- Responsive homepage
-- Player search demo
-- Latest matches section
-- Featured clips section
+## V2
+- Premium cinematic sports direction
+- Responsive desktop/mobile layout
+- Player finder demo
+- Featured match archive
+- Filterable clip marketplace
 - Clip preview modal
-- "How SideCam works" section
-- Mobile navigation
+- Working demo cart
+- Cloudflare Stream-ready preview area
+- Appwrite Sites compatible with no npm/build step
 
-## Next build
-1. Connect Appwrite database
-2. Connect Cloudflare Stream
-3. Create admin upload/dashboard
-4. Create match/player/clip records
-5. Add player search
-6. Add checkout + secure clip delivery
-7. Connect sidecamkw.com
+## Appwrite Sites settings
+Install command: leave blank
+Build command: leave blank
+Output directory: ./
+Fallback file: index.html
 
-## Deploy
-The project is plain HTML/CSS/JS, so it can be deployed directly from the repository root.
+This is the front-end V2. Live database, authentication, payment and Cloudflare Stream playback/upload wiring are backend phases.
